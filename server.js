@@ -5,6 +5,10 @@ var app = express()
 
 app.use(bodyParser.json())
 
+app.get('/', function(req, res) {
+  res.sendfile('layouts/posts.html')
+})
+
 app.get('/api/posts', function(req, res, next) {
   Post.find(function(err, posts) {
     if (err) {return next(err) }
@@ -23,6 +27,6 @@ app.post('/api/posts', function(req, res, next) {
   })
 })
 
-app.listen(3000, function() {
-  console.log('Server listening on',3000)
+app.listen(3001, function() {
+  console.log('Server listening on',3001)
 })
